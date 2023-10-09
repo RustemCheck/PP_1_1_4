@@ -1,23 +1,29 @@
 package jm.task.core.jdbc;
 
 import jm.task.core.jdbc.dao.UserDao;
+import jm.task.core.jdbc.dao.UserDaoHibernateImpl;
 import jm.task.core.jdbc.dao.UserDaoJDBCImpl;
+import jm.task.core.jdbc.model.User;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
 
 public class Main {
     public static void main(String[] args) {
-        UserDao userDao = new UserDaoJDBCImpl();
 
-        userDao.createUsersTable();
+        UserDao userDao = new UserDaoHibernateImpl();
 
-        userDao.saveUser("Rustem", "Zinnatullin", (byte) 25);
-        userDao.saveUser("Artur", "Karpov", (byte) 28);
-        userDao.saveUser("Maksim", "Surkov", (byte) 19);
-        userDao.saveUser("Elena", "Orlova", (byte) 34);
-
-        userDao.getAllUsers();
-        userDao.removeUserById(3);
-        userDao.cleanUsersTable();
+//        userDao.createUsersTable();
         userDao.dropUsersTable();
 
+        userDao.saveUser("Test", "Test", (byte) 31);
+//        userDao.getAllUsers();
+//        userDao.saveUser("Artur", "Karpov", (byte) 17);
+//        userDao.saveUser("Nikita", "Popov", (byte) 29);
+//        userDao.saveUser("Bob", "Skayler", (byte) 19);
+//        userDao.saveUser("Zuar", "Tregulov", (byte) 23);
+
+        //userDao.removeUserById(3);
+//        userDao.getAllUsers();
     }
 }
